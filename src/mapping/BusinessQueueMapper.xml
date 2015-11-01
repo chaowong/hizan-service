@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.se.dao.BusinessQueueDao">
+	<resultMap type="com.se.entity.BusinessQueue" id="BusinessQueueRM">
+		<id column="id" property="id" />
+		<result column="queuenum" property="queuenum" />
+		<result column="businessid" property="businessid" />
+		<result column="state" property="state" />
+		<result column="createdon" property="createdon" />
+		<result column="createdby" property="createdby" />
+		<result column="handledon" property="handledon" />
+		<result column="handledby" property="handledby" />
+		<result column="handledwindow" property="handledwindow" />
+	</resultMap>
+	<!-- _____________________________________________________________________________ 全部字段 -->
+	<sql id="COLUMNS">
+		id,queuenum,businessid,state,createdon,createdby,handledon,handledby,handledwindow
+	</sql>
+
+
+	<!-- _____________________________________________________________________________ 1.add -->
+
+	<insert id="add" parameterType="com.se.entity.BusinessQueue">
+		insert into se_business_queue (id,queuenum,businessid,state,createdon,createdby,handledon,handledby,handledwindow)
+		values (#{id},#{queuenum},#{businessid},#{state},#{createdon},#{createdby},#{handledon},#{handledby},#{handledwindow})
+	</insert>
+
+	<!-- ______________________________________________________________________________ 2.modify -->
+
+	<update id="modify" parameterType="com.se.entity.BusinessQueue">
+		update se_business_queue 
+		<set>
+			<if test="queuenum != null">queuenum = #{queuenum},</if>
+			<if test="businessid != null">businessid = #{businessid},</if>
+			<if test="state != null">state = #{state},</if>
+			<if test="createdon != null">createdon = #{createdon},</if>
+			<if test="createdby != null">createdby = #{createdby},</if>
+			<if test="handledon != null">handledon = #{handledon},</if>
+			<if test="handledby != null">handledby = #{handledby},</if>
+			<if test="handledwindow != null">handledwindow = #{handledwindow}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- _____________________________________________________________________________ 3.removeById -->
+
+	<delete id="removeById" parameterType="string">
+		delete from se_business_queue where id=#{id} 
+	</delete>
+
+	<!-- _____________________________________________________________________________ 4.removeByIds -->
+
+	<delete id="removeByIds" parameterType="List">
+		delete from se_business_queue where id in 
+		<foreach collection = "list" index="index"  item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<!-- _____________________________________________________________________________ 5.listAll -->
+
+	<select id="listAll" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue order by createdon asc
+	</select>
+
+	<!-- _____________________________________________________________________________ 6.listBy -->
+
+	<select id="listBy" parameterType="map" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="state != null"> and state=#{state} </if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+		order by createdon asc
+	</select>
+
+	<!-- _____________________________________________________________________________ 7.pageBy -->
+
+	<select id="pageBy" parameterType="map" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+		order by createdon asc
+		limit #{startIdx},#{limit}
+	</select>
+
+    <!-- _____________________________________________________________________________ 8.1.findByMap -->
+
+	<select id="findByMap" parameterType="map" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+	</select>
+	
+	<!-- _____________________________________________________________________________ 8.2.findBy -->
+
+	<select id="findBy" parameterType="com.se.entity.BusinessQueue" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+	</select>
+
+	<!-- _____________________________________________________________________________ 9.findById -->
+
+	<select id="findById" parameterType="string" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue where id = #{id}
+	</select>
+
+	<!-- _____________________________________________________________________________ 10.countAll -->
+
+	<select id="countAll" resultType="integer">
+		select count(id) from se_business_queue
+	</select>
+
+	<!-- _____________________________________________________________________________ 11.countBy -->
+
+	<select id="countBy" parameterType="map" resultType="integer">
+		select count(id) from se_business_queue
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+	</select>
+	<!-- ******************扩展Mapper****************** -->
+	
+	<!-- 查询正常在列的号______________________________________________________________ listByPerform -->
+	<!-- state=1 已取号  state=2 受理中 state=3 受理完 state=4 已评价 state=0 取消排队 state=5 已作废（叫过号） -->
+	<select id="listByPerform" parameterType="map" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue
+		<where>
+			(state = '1' or state='2' or state='3')
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+		order by createdon desc
+	</select>
+	<!-- ____________________________________________________________________统计每个用户前面排队的人数 -->
+
+	<select id="countFrontBy" parameterType="map" resultType="integer">
+		select count(id) from se_business_queue
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="createdon != null">and createdon &lt; #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+	</select>
+	
+	<!-- 查询职工在列的号______________________________________________________ listByEmployeePerform -->
+	<!-- state=1 已取号  state=2 受理中 state=3 受理完 state=4 已评价 state=0 取消排队 state=5 已作废（叫过号） -->
+	<select id="listByEmployeePerform" parameterType="map" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue
+		<where>
+			(state = '1' or state='2')
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+		order by createdon asc
+	</select>
+	
+	<select id="listTodayBy" parameterType="map" resultMap="BusinessQueueRM">
+		select <include refid="COLUMNS" /> from se_business_queue
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="queuenum != null">and queuenum = #{queuenum}</if>
+			<if test="businessid != null">and businessid = #{businessid}</if>
+			<if test="state != null"> and state=#{state} </if>
+			<if test="createdon != null">and createdon &gt; #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+			<if test="handledon != null">and handledon = #{handledon}</if>
+			<if test="handledby != null">and handledby = #{handledby}</if>
+			<if test="handledwindow != null">and handledwindow = #{handledwindow}</if>
+		</where>
+		order by createdon asc
+	</select>
+</mapper>

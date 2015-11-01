@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="plugins/select2/4.0/css/select2.min.css">
+
+
+<script type="text/javascript" src="assets/js/libs/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="plugins/select2/4.0/js/select2.full.min.js"></script>
+</head>
+<body>
+<select class="js-example-data-array col-md-12" multiple="multiple" ></select>
+    <select class="js-data-example-ajax">
+      <option value="3620194" selected="selected">select2</option>
+    </select>
+<script>
+$(document).ready(function() {
+var data = [{ id: 0, text: 'enhancement',selected:true }, { id: 1, text: 'bug',selected:true }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
+var initData="";
+$.get("../console/index/listAll.do",function(){
+	
+	
+});
+var $select2=$(".js-example-data-array");
+$select2.select2({data:data});
+
+ 
+     $(".js-data-example-ajax").select2({
+      multiple:true,
+      quietMillis: 100,
+      ajax: {
+        url: "../console/index/listAll.do",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+           return {q: params.term,page: params.page}; 
+        },
+       processResults: function (data, page) {
+          return {results: data.content};
+        },
+        cache: true
+      },
+      escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+      minimumInputLength: 1,
+      templateResult: formatRepo, // omitted for brevity, see the source of this page
+      templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+    });
+    
+function formatRepo (repo) {
+	//console.log(repo);
+	return repo.title;
+}
+function formatRepoSelection (repo) {
+    return repo.title || repo.id;
+  }
+});
+</script>
+</body>
+</html>

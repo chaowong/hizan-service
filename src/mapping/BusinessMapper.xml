@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.se.dao.BusinessDao">
+	<resultMap type="com.se.entity.Business" id="BusinessRM">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="description" property="description" />
+		<result column="windows" property="windows" />
+		<result column="state" property="state" />
+		<result column="orderby" property="orderby" />
+		<result column="createdon" property="createdon" />
+		<result column="createdby" property="createdby" />
+	</resultMap>
+	<!-- _____________________________________________________________________________ 全部字段 -->
+	<sql id="COLUMNS">
+		id,title,description,windows,state,orderby,createdon,createdby
+	</sql>
+
+
+	<!-- _____________________________________________________________________________ 1.add -->
+
+	<insert id="add" parameterType="com.se.entity.Business">
+		insert into se_business (id,title,description,windows,state,orderby,createdon,createdby)
+		values (#{id},#{title},#{description},#{windows},#{state},#{orderby},#{createdon},#{createdby})
+	</insert>
+
+	<!-- ______________________________________________________________________________ 2.modify -->
+
+	<update id="modify" parameterType="com.se.entity.Business">
+		update se_business 
+		<set>
+			<if test="title != null">title = #{title},</if>
+			<if test="description != null">description = #{description},</if>
+			<if test="windows != null">windows = #{windows},</if>
+			<if test="state != null">state = #{state},</if>
+			<if test="orderby != null">orderby = #{orderby},</if>
+			<if test="createdon != null">createdon = #{createdon},</if>
+			<if test="createdby != null">createdby = #{createdby}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- _____________________________________________________________________________ 3.removeById -->
+
+	<delete id="removeById" parameterType="string">
+		delete from se_business where id=#{id} 
+	</delete>
+
+	<!-- _____________________________________________________________________________ 4.removeByIds -->
+
+	<delete id="removeByIds" parameterType="List">
+		delete from se_business where id in 
+		<foreach collection = "list" index="index"  item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<!-- _____________________________________________________________________________ 5.listAll -->
+
+	<select id="listAll" resultMap="BusinessRM">
+		select <include refid="COLUMNS" /> from se_business order by orderby asc
+	</select>
+
+	<!-- _____________________________________________________________________________ 6.listBy -->
+
+	<select id="listBy" parameterType="map" resultMap="BusinessRM">
+		select <include refid="COLUMNS" /> from se_business
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="title != null">and title = #{title}</if>
+			<if test="description != null">and description = #{description}</if>
+			<if test="windows != null">and windows = #{windows}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="orderby != null">and orderby = #{orderby}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+		</where>
+		order by orderby asc
+	</select>
+
+	<!-- _____________________________________________________________________________ 7.pageBy -->
+
+	<select id="pageBy" parameterType="map" resultMap="BusinessRM">
+		select <include refid="COLUMNS" /> from se_business
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="title != null">and title = #{title}</if>
+			<if test="description != null">and description = #{description}</if>
+			<if test="windows != null">and windows = #{windows}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="orderby != null">and orderby = #{orderby}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+		</where>
+		order by orderby asc
+		limit #{startIdx},#{limit}
+	</select>
+
+	<!-- _____________________________________________________________________________ 8.1.findByMap -->
+
+	<select id="findByMap" parameterType="map" resultMap="BusinessRM">
+		select <include refid="COLUMNS" /> from se_business
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="title != null">and title = #{title}</if>
+			<if test="description != null">and description = #{description}</if>
+			<if test="windows != null">and windows = #{windows}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="orderby != null">and orderby = #{orderby}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+		</where>
+	</select>
+	
+	<!-- _____________________________________________________________________________ 8.2.findBy -->
+
+	<select id="findBy" parameterType="com.se.entity.Business" resultMap="BusinessRM">
+		select <include refid="COLUMNS" /> from se_business
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="title != null">and title = #{title}</if>
+			<if test="description != null">and description = #{description}</if>
+			<if test="windows != null">and windows = #{windows}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="orderby != null">and orderby = #{orderby}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+		</where>
+	</select>
+
+	<!-- _____________________________________________________________________________ 9.findById -->
+
+	<select id="findById" parameterType="string" resultMap="BusinessRM">
+		select <include refid="COLUMNS" /> from se_business where id = #{id}
+	</select>
+
+	<!-- _____________________________________________________________________________ 10.countAll -->
+
+	<select id="countAll" resultType="integer">
+		select count(id) from se_business
+	</select>
+
+	<!-- _____________________________________________________________________________ 11.countBy -->
+
+	<select id="countBy" parameterType="map" resultType="integer">
+		select count(id) from se_business
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="title != null">and title = #{title}</if>
+			<if test="description != null">and description = #{description}</if>
+			<if test="windows != null">and windows = #{windows}</if>
+			<if test="state != null">and state = #{state}</if>
+			<if test="orderby != null">and orderby = #{orderby}</if>
+			<if test="createdon != null">and createdon = #{createdon}</if>
+			<if test="createdby != null">and createdby = #{createdby}</if>
+		</where>
+	</select>
+	<!-- ******************扩展Mapper****************** -->
+	
+	<select id="listByDescription" parameterType="map" resultMap="BusinessRM">
+		select <include refid="COLUMNS" /> from se_business
+		<where>
+			<if test="description != null"> description like CONCAT('%','${description}','%')  </if>
+		</where>
+	</select>
+</mapper>

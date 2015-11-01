@@ -1,0 +1,57 @@
+﻿ <div class="logopanel">
+        <h1><span>[</span> 管理平台 <span>]</span></h1>
+    </div><!-- logopanel -->
+    <div class="leftpanelinner">
+        <!-- This is only visible to small devices -->
+        <div class="visible-xs hidden-sm hidden-md hidden-lg">
+            <div class="media userlogged">
+                <img alt="" src="images/photos/loggeduser.png" class="media-object">
+                <div class="media-body">
+                    <h4>超人</h4>
+                    <span>"Life is so..."</span>
+                </div>
+            </div>
+            <h5 class="sidebartitle actitle">帐号</h5>
+            <ul class="nav nav-pills nav-stacked nav-bracket mb30">
+              <li><a href="profile.html"><i class="fa fa-user"></i> <span>个人资料</span></a></li>
+              <li><a href=""><i class="fa fa-cog"></i> <span>设置</span></a></li>
+              <li><a href=""><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
+              <li><a href="signout.html"><i class="fa fa-sign-out"></i> <span>注销</span></a></li>
+            </ul>
+        </div>
+      <h5 class="sidebartitle">导航</h5>
+      <ul class="nav nav-pills nav-stacked nav-bracket">
+        <li class="active"><a href="media-manager.html"><i class="fa fa-file-text"></i> 用户管理</a></li>
+        <li class="nav-parent"><a href=""><i class="fa fa-file-text"></i> <span>业务管理</span></a>
+          <ul class="children">
+            <li><a href="#businesslist.html" ><i class="fa fa-caret-right"></i> 业务管理</a></li>
+            <li><a item="form-layouts.html"><i class="fa fa-caret-right"></i> 评价指标管理</a></li>
+          </ul>
+        </li>
+        <li class="nav-parent"><a href=""><i class="fa fa-file-text"></i> <span>业务分析</span></a>
+          <ul class="children">
+            <li><a href="general-forms.html"><i class="fa fa-caret-right"></i> 业务分析</a></li>
+            <li><a href="form-layouts.html"><i class="fa fa-caret-right"></i> 评价分析</a></li>
+            <li><a href="form-wizards.html"><i class="fa fa-caret-right"></i> 用户访问统计</a></li>
+          </ul>
+        </li>
+        <li class="nav-parent"><a href=""><i class="fa fa-file-text"></i> <span>系统配置</span></a>
+          <ul class="children">
+            <li><a href="general-forms.html"><i class="fa fa-caret-right"></i> 基本配置</a></li>
+            <li><a href="form-layouts.html"><i class="fa fa-caret-right"></i> 高级配置</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- leftpanelinner -->
+    
+    <script>
+    
+    $(".nav").find("a").click(function() {
+    	var url=$(this).attr("href");
+    	if(url!=""){
+    	var newurl=url.substring(1,url.length);
+    	alert(newurl);
+		loadURL(newurl, $(".contentpanel"));
+    	}
+	});
+    </script>

@@ -1,0 +1,752 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+
+  <title>UI作品集</title>
+
+  <link href="css/style.default.css" rel="stylesheet">
+  <link href="css/prettyPhoto.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/dropzone.css" />
+  <link href="js/sweetalert/sweetalert.css" rel="stylesheet" />
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+<section>
+  <div class="leftpanel"></div><!-- leftpanel -->
+  <div class="mainpanel">
+    <div class="headerbar"></div><!-- headerbar -->
+    <div class="pageheader">
+      <h2><i class="fa fa-file-o"></i> 作品管理 <span>包括设计图的增删改查操作。</span></h2>
+      <div class="breadcrumb-wrapper">
+        <span class="label">当前位置:</span>
+        <ol class="breadcrumb">
+          <li><a href="index.html">作品集</a></li>
+          <li><a href="calendar.html">文件夹一级</a></li>
+          <li class="active">文件夹二级</li>
+        </ol>
+      </div>
+    </div>
+        
+    <div class="contentpanel">
+      
+      <ul class="filemanager-options">
+        <li>
+          <div class="ckbox ckbox-default">
+            <input type="checkbox" id="selectall" value="1" />
+            <label for="selectall">全选</label>
+          </div>
+        </li>
+        <li>
+          <a href="" class="itemopt disabled"><i class="fa fa-envelope-o"></i> 新建目录</a>
+        </li>
+        <li>
+          <a href="" class="itemopt disabled"><i class="fa fa-download"></i> 下载</a>
+        </li>
+        <li>
+          <a href="" class="itemopt disabled"><i class="fa fa-pencil"></i> 编辑</a>
+        </li>
+        <li>
+          <a href="" class="itemopt disabled"><i class="fa fa-trash-o"></i> 删除</a>
+        </li>
+        <li class="filter-type">
+                       显示:
+          <a href="all.html" class="active">全部</a>
+          <a href="document.html">文档</a>
+          <a href="audio.html">音频</a>
+          <a href="image.html">图片</a>
+          <a href="video.html">视频</a>
+        </li>
+        
+      </ul>
+        
+      
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="row filemanager">
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 document">
+              <div class="thmb">
+                <div class="ckbox ckbox-default">
+                  <input type="checkbox" id="check1" value="1" />
+                  <label for="check1"></label>
+                </div>
+                <div class="btn-group fm-group">
+                    <button type="button" class="btn btn-default dropdown-toggle fm-toggle" data-toggle="dropdown">
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu fm-menu" role="menu">
+                      <li><a href="#"><i class="fa fa-share"></i> 分享</a></li>
+                      <li><a href="#"><i class="fa fa-pencil"></i> 编辑</a></li>
+                      <li><a href="#"><i class="fa fa-download"></i> 下载</a></li>
+                      <li><a href="#"><i class="fa fa-trash-o"></i> 删除</a></li>
+                    </ul>
+                </div>
+                <div class="thmb-prev">
+                  <a href="images/spritemap.png" rel="prettyPhoto[gallary]">
+                    <img src="images/spritemap.png" class="img-responsive" alt="" />
+                  </a>
+                </div>
+                <h5 class="fm-title"><a href="">MyDocuments.doc</a></h5>
+                <small class="text-muted">Jan 03, 2014</small>
+              </div>
+            </div>
+            
+          </div><!-- row -->
+        </div><!-- col-sm-9 -->
+        <div class="col-sm-3">
+          <div class="fm-sidebar">
+            <div class="dropzone" id="coverzone">
+				<div class="fallback">
+					<input name="dropzonefile" type="file" multiple />
+				</div>
+			</div>
+			<div class="mb30"></div>
+            <button class="btn btn-primary btn-block">上传文件</button>
+            
+            <div class="mb30"></div>
+            
+            <h5 class="subtitle">文件夹 <a href="" class="pull-right">+ 添加新文件夹</a></h5>
+            <ul class="folder-list">
+              <li><a href=""><i class="fa fa-folder-o"></i> My Pictures</a></li>
+              <li><a href=""><i class="fa fa-folder-o"></i> Facebook Photos</a></li>
+              <li><a href=""><i class="fa fa-folder-o"></i> My Collection</a></li>
+              <li><a href=""><i class="fa fa-folder-o"></i> Illustrations</a></li>
+              <li><a href=""><i class="fa fa-folder-o"></i> TV Series</a></li>
+              <li><a href=""><i class="fa fa-folder-o"></i> Downloaded Movies</a></li>
+              <li><a href=""><i class="fa fa-folder-o"></i> E-book</a></li>
+            </ul>
+            
+            <div class="mb30"></div>
+            
+            <h5 class="subtitle">标签</h5>
+            <ul class="tag-list">
+              <li><a href="">Tuturials</a></li>
+              <li><a href="">Documentation</a></li>
+            </ul>
+            
+          </div>
+        </div><!-- col-sm-3 -->
+      </div>
+    </div>
+    
+  </div><!-- mainpanel -->
+  
+  <div class="rightpanel">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#rp-alluser" data-toggle="tab"><i class="fa fa-users"></i></a></li>
+        <li><a href="#rp-favorites" data-toggle="tab"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#rp-history" data-toggle="tab"><i class="fa fa-clock-o"></i></a></li>
+        <li><a href="#rp-settings" data-toggle="tab"><i class="fa fa-gear"></i></a></li>
+    </ul>
+        
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="rp-alluser">
+            <h5 class="sidebartitle">Online Users</h5>
+            <ul class="chatuserlist">
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/userprofile.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Eileen Sideways</strong>
+                            <small>Los Angeles, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user1.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <span class="pull-right badge badge-danger">2</span>
+                            <strong>Zaham Sindilmaca</strong>
+                            <small>San Francisco, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user2.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Nusja Nawancali</strong>
+                            <small>Bangkok, Thailand</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user3.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Renov Leongal</strong>
+                            <small>Cebu City, Philippines</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Weno Carasbong</strong>
+                            <small>Tokyo, Japan</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+            
+            <div class="mb30"></div>
+            
+            <h5 class="sidebartitle">Offline Users</h5>
+            <ul class="chatuserlist">
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user5.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Eileen Sideways</strong>
+                            <small>Los Angeles, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user2.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Zaham Sindilmaca</strong>
+                            <small>San Francisco, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user3.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Nusja Nawancali</strong>
+                            <small>Bangkok, Thailand</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Renov Leongal</strong>
+                            <small>Cebu City, Philippines</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user5.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Weno Carasbong</strong>
+                            <small>Tokyo, Japan</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Renov Leongal</strong>
+                            <small>Cebu City, Philippines</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user5.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Weno Carasbong</strong>
+                            <small>Tokyo, Japan</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane" id="rp-favorites">
+            <h5 class="sidebartitle">Favorites</h5>
+            <ul class="chatuserlist">
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user2.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Eileen Sideways</strong>
+                            <small>Los Angeles, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user1.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Zaham Sindilmaca</strong>
+                            <small>San Francisco, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user3.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Nusja Nawancali</strong>
+                            <small>Bangkok, Thailand</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Renov Leongal</strong>
+                            <small>Cebu City, Philippines</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user5.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Weno Carasbong</strong>
+                            <small>Tokyo, Japan</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane" id="rp-history">
+            <h5 class="sidebartitle">History</h5>
+            <ul class="chatuserlist">
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Eileen Sideways</strong>
+                            <small>Hi hello, ctc?... would you mind if I go to your...</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user2.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Zaham Sindilmaca</strong>
+                            <small>This is to inform you that your product that we...</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user3.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Nusja Nawancali</strong>
+                            <small>Are you willing to have a long term relat...</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane pane-settings" id="rp-settings">
+            
+            <h5 class="sidebartitle mb20">Settings</h5>
+            <div class="form-group">
+                <label class="col-xs-8 control-label">Show Offline Users</label>
+                <div class="col-xs-4 control-label">
+                    <div class="toggle toggle-success"></div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-8 control-label">Enable History</label>
+                <div class="col-xs-4 control-label">
+                    <div class="toggle toggle-success"></div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-8 control-label">Show Full Name</label>
+                <div class="col-xs-4 control-label">
+                    <div class="toggle-chat1 toggle-success"></div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-8 control-label">Show Location</label>
+                <div class="col-xs-4 control-label">
+                    <div class="toggle toggle-success"></div>
+                </div>
+            </div>
+            
+        </div><!-- tab-pane -->
+        
+    </div><!-- tab-content -->
+  </div><!-- rightpanel -->
+  
+</section>
+
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.sparkline.min.js"></script>
+<script src="js/toggles.min.js"></script>
+<script src="js/retina.min.js"></script>
+<script src="js/jquery.cookies.js"></script>
+<script src="js/dropzone.min.js"></script>
+<script src="js/sweetalert/sweetalert.min.js"></script> 
+ <script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+
+<script src="js/custom.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			 $(".thmb-prev a[rel^='prettyPhoto']").prettyPhoto(); 
+			/* 默认打开
+			$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: false});
+		 */
+		});
+		</script>
+		
+<script>
+jQuery(window).load(function(){
+    $.get('web/picture/listAll.do',{categoryid:"1",limit:50,offset:0},function(result){
+    	var data=JSON.parse(result);
+    	var itemObj=$('.filemanager').html();
+    	$.each(data.content.rows,function(index,item){
+    	    	
+    	    	var $itemHtml = $("<div class=\"col-xs-6 col-sm-4 col-md-3 image\" ><div class=\"thmb\">"+
+    	                "                <div class=\"ckbox ckbox-default\">"+
+    	                "                  <input type=\"checkbox\" id=\"check2\" value=\"1\" />"+
+    	                "                  <label for=\"check2\"></label>"+
+    	                "                </div>"+
+    	                "                <div class=\"btn-group fm-group\">"+
+    	                "                    <button type=\"button\" class=\"btn btn-default dropdown-toggle fm-toggle\" data-toggle=\"dropdown\">"+
+    	                "                      <span class=\"caret\"></span>"+
+    	                "                    </button>"+
+    	                "                    <ul class=\"dropdown-menu fm-menu\" role=\"menu\">"+
+    	                "                      <li><a href=\"#\"><i class=\"fa fa-share\"></i> 分享</a></li>"+
+    	                "                      <li><a href=\"#\"><i class=\"fa fa-pencil\"></i> 编辑</a></li>"+
+    	                "                      <li><a href=\"#\"><i class=\"fa fa-download\"></i> 下载</a></li>"+
+    	                "                      <li><a href=\"#\"><i class=\"fa fa-trash-o\"></i> 删除</a></li>"+
+    	                "                    </ul>"+
+    	                "                </div><!-- btn-group -->"+
+    	                "                <div class=\"thmb-prev\">"+
+    	                "                  <a href=\""+item.source+"\" rel=\"prettyPhoto[gallary]\">"+
+    	                "                    <img src=\""+item.source+"\" class=\"img-responsive\" alt=\"\" />"+
+    	                "                  </a>"+
+    	                "                </div>"+
+    	                "                <h5 class=\"fm-title\"><a href=\"\">"+item.title+"</a></h5>"+
+    	                "                <small class=\"text-muted\">"+createdonFormatter(item.createdon)+"</small>"+
+    	                "              </div></div>");
+    	    	 
+    		$('.filemanager').append($itemHtml).delay(4000);
+             msnry.appended($itemHtml);
+             imagesLoaded(container, function() {
+             	msnry.layout();
+             }); 
+    	});
+     //------------------------
+     $(".thmb-prev a[rel^='prettyPhoto']").prettyPhoto(); 
+     jQuery('.thmb').hover(function(){
+	      var t = jQuery(this);
+	      t.find('.ckbox').show();
+	      t.find('.fm-group').show();
+	    }, function() {
+	      var t = jQuery(this);
+	      if(!t.closest('.thmb').hasClass('checked')) {
+	        t.find('.ckbox').hide();
+	        t.find('.fm-group').hide();
+	      }
+	    });
+    });
+
+    jQuery('.ckbox').each(function(){
+      var t = jQuery(this);
+      var parent = t.parent();
+      if(t.find('input').is(':checked')) {
+        t.show();
+        parent.find('.fm-group').show();
+        parent.addClass('checked');
+      }
+    });
+    
+    
+    jQuery('.ckbox').click(function(){
+      var t = jQuery(this);
+      if(!t.find('input').is(':checked')) {
+        t.closest('.thmb').removeClass('checked');
+        enable_itemopt(false);
+      } else {
+        t.closest('.thmb').addClass('checked');
+        enable_itemopt(true);
+      }
+    });
+    
+
+    jQuery('#selectall').click(function(){
+      if(jQuery(this).is(':checked')) {
+        jQuery('.thmb').each(function(){
+          jQuery(this).find('input').attr('checked',true);
+          jQuery(this).addClass('checked');
+          jQuery(this).find('.ckbox, .fm-group').show();
+        });
+        enable_itemopt(true);
+      } else {
+        jQuery('.thmb').each(function(){
+          jQuery(this).find('input').attr('checked',false);
+          jQuery(this).removeClass('checked');
+          jQuery(this).find('.ckbox, .fm-group').hide();
+        });
+        enable_itemopt(false);
+      }
+    });
+    
+    function enable_itemopt(enable) {
+      if(enable) {
+        jQuery('.itemopt').removeClass('disabled');
+      } else {
+        
+        // check all thumbs if no remaining checks
+        // before we can disabled the options
+        var ch = false;
+        jQuery('.thmb').each(function(){
+          if(jQuery(this).hasClass('checked'))
+            ch = true;
+        });
+        
+        if(!ch)
+          jQuery('.itemopt').addClass('disabled');
+      }
+    }
+  //------------------------
+    "use strict";
+  });
+  
+  // - 
+var container = document.querySelector('.filemanager');
+var msnry;
+//initialize Masonry after all images have loaded
+imagesLoaded(container, function() {
+	msnry = new Masonry( container, {
+		  // options
+		  columnWidth: '.col-xs-6',
+		  itemSelector: '.col-xs-6'
+		});
+});
+/* 
+var msnry = new Masonry( container, {
+  // options
+  columnWidth: '.col-xs-6',
+  itemSelector: '.col-xs-6'
+}); */
+  
+
+/* var $container = $('.filemanager');
+$container.imagesLoaded( function(){
+	   $container.masonry({
+	            itemSelector : '.col-xs-6',
+	            columnWidth: '.col-xs-6',
+	        });
+	    }); */
+/* var msnry = $container.data('masonry'); */
+// check on load
+if(jQuery(window).width() <= 480 )
+    msnry.destroy();
+
+// check on resize
+jQuery(window).resize(function(){
+    if(jQuery(this).width() <= 480 )
+        msnry.destroy();
+});
+
+// relayout items when clicking chat icon
+jQuery('#chatview, .menutoggle, #fullscreenview').click(function(){
+   msnry.layout();
+}); 
+
+Dropzone.autoDiscover = false;
+var myDropzone=  new Dropzone("#coverzone",{
+    url: "web/picture/ajaxFile.do",
+    paramName: "ajaxfile",
+    addRemoveLinks: true,
+    dictRemoveLinks: "x",
+    dictRemoveFile: "x",
+    autoProcessQueue: true,//不自动上传
+    dictCancelUpload: "x",
+    dictDefaultMessage: "拖拽图片上传",
+    maxFiles: 5,
+    dictMaxFilesExceeded: "数量限制{{maxFiles}}",
+    dictInvalidFileType: "类型限制.jpg,.png,.gif",
+    maxFilesize: 10,// MB
+    dictFileTooBig:"文件({{filesize}}MB). 超过最大: {{maxFilesize}}MB限制。",
+    acceptedFiles: ".jpg,.png,.gif",
+    init: function() {
+        this.on("addedfile",function(file, response) {
+            //file._removeLink.className = "wangchaowangchao";
+        });
+        this.on("success",function(file, response) {
+            var data = JSON.parse(response);
+            file._removeLink.setAttribute("itemid", data.content.id);
+            //$("#articlecover").val(data.content.id);//$("input[name='articlecover']")
+            var $newContent = $("<div class=\"col-xs-6 col-sm-4 col-md-3 image\" ><div class=\"thmb\">"+
+            "                <div class=\"ckbox ckbox-default\">"+
+            "                  <input type=\"checkbox\" id=\"check2\" value=\"1\" />"+
+            "                  <label for=\"check2\"></label>"+
+            "                </div>"+
+            "                <div class=\"btn-group fm-group\">"+
+            "                    <button type=\"button\" class=\"btn btn-default dropdown-toggle fm-toggle\" data-toggle=\"dropdown\">"+
+            "                      <span class=\"caret\"></span>"+
+            "                    </button>"+
+            "                    <ul class=\"dropdown-menu fm-menu\" role=\"menu\">"+
+            "                      <li><a href=\"#\"><i class=\"fa fa-share\"></i> 分享</a></li>"+
+            "                      <li><a href=\"#\"><i class=\"fa fa-pencil\"></i> 编辑</a></li>"+
+            "                      <li><a href=\"#\"><i class=\"fa fa-download\"></i> 下载</a></li>"+
+            "                      <li><a href=\"#\"><i class=\"fa fa-trash-o\"></i> 删除</a></li>"+
+            "                    </ul>"+
+            "                </div><!-- btn-group -->"+
+            "                <div class=\"thmb-prev\">"+
+            "                  <a href=\"images/photos/media1.jpg\" data-rel=\"prettyPhoto\">"+
+            "                    <img src=\""+data.content.source+"\" class=\"img-responsive\" alt=\"\" />"+
+            "                  </a>"+
+            "                </div>"+
+            "                <h5 class=\"fm-title\"><a href=\"\">"+data.content.title+"</a></h5>"+
+            "                <small class=\"text-muted\">"+createdonFormatter(data.content.createdon)+"</small>"+
+            "              </div></div>");
+            $('.filemanager').prepend($newContent).delay(4000);
+             
+            msnry.prepended($newContent);
+            imagesLoaded(container, function() {
+            	msnry.layout();
+            });
+          
+        });
+        this.on("removedfile",function(file, response) {
+            //alert(file._removeLink.getAttribute("itemid"));
+            var coverimgid = file._removeLink.getAttribute("itemid");
+            if (coverimgid != "") {
+                $.ajax({
+                    dataType: "json",
+                    type: "post",
+                    data: {
+                        photoid: coverimgid
+                    },
+                    url: "web/picture/deleteOne.do",
+                    success: function(data) {
+                        if (data.state == "success") {
+                        	msnry.layout();
+                            swal({
+                                title: "删除成功！",
+                                text: "1秒后窗口自动关闭",
+                                type: "success",
+                                showConfirmButton: false,
+                                timer: 600
+                            });
+                        } else {
+                            swal({
+                                title: "删除失败！",
+                                text: "1秒后窗口自动关闭",
+                                type: "error",
+                                showConfirmButton: false,
+                                timer: 600
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
+});
+  
+  
+  function createdonFormatter(datatime) {
+	    //var startTime = new Date(Date.parse(row.createdon.replace(/-/g, "/"))).getTime();
+	    var createdTime= datatime;
+	    var currentTime = new Date().getTime();
+	    var durationTime = Math.floor((currentTime - createdTime) / 1000);//时间差为s，1小时=60*60 s，1天=60*24=1440min
+	    if (createdTime != null) {
+	        if (durationTime <60) {
+	            //1分钟内显示为刚刚;
+	            return "刚刚";
+	        } else if (durationTime >=60 && durationTime<3600) {
+	        	//1小时内用分钟表示
+	            return Math.ceil((currentTime - createdTime) / (1000 * 60)) +"分钟前";
+	        } else if (durationTime >=3600 && durationTime<= (1440*60)) {
+	        	//1天内用小时表示
+	            return Math.floor((currentTime - createdTime) / (1000 * 60 * 60)) +"小时前";
+	        }else if (durationTime > (1440*60) && durationTime <(1440*3*60)) {
+	        	//超过1天且不超过3天，用天数的整数位表示
+	            return Math.floor((currentTime - createdTime) / (1000 * 60 * 60 *24)) +"天前";
+	        }else if (durationTime >= (1440*3*60)) {
+	        	//超过3天用实际日期表示
+	            return new Date(parseInt(createdTime) ).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ")
+	        } 
+	    } else {
+	        return createdTime;
+	    }
+	}
+  //-----------------------------------------------
+  jQuery(document).ready(function(){
+	    "use strict";
+	    
+	    
+	    
+	  });
+</script>
+
+</body>
+</html>

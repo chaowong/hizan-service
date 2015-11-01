@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>北京瑞宁智远科技有限公司-面试申请</title>
+
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme111.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+.innerRow{
+margin-top:10px;
+}
+.small-header h1,small{
+font-size:14px;
+color:#ccc;
+}
+.row-add{
+padding-bottom:25px;
+margin-bottom:25px;
+border-bottom:1px solid #eee;
+}
+.row-add .btn-danger{
+float: right;position: relative; margin-right: -70px;margin-top: -35px;
+}
+
+.form-control,.input-group-addon,.btn {
+    border-radius: 0px;
+
+}
+</style>
+
+<script type="text/javascript">
+$(function () {
+	var show_count = 20;   //要显示的条数
+	var count = 1;    //递增的开始值，这里是你的ID
+	$(".btn-add").click(function () {
+		var $parent=$(this).parent().parent().parent();
+		var $clone=$parent.find(".row-add").first();
+		var $clone2=$clone.clone();
+		$clone2.find("input").val("");
+		var length = $parent.find(".row-add").length;
+		if (length < show_count)    //点击时候，如果当前的数字小于递增结束的条件
+		{
+			$clone2.append("<button class='btn btn-danger' type=\"button\" onClick=\"deleteRow(this)\" style=\"\">删除</button>").insertBefore($(this).parent().parent());
+			changeIndex();//更新行号
+		}
+	});
+});
+function changeIndex() {
+	var i = 1;
+	$("#dynamicTable tbody tr").each(function () { //循环tab tbody下的tr
+		$(this).find("input[name='NO']").val(i++);//更新行号
+	});
+}
+
+function deleteRow(opp) {
+	console.log(opp);
+	var $parent=$(opp).parent().parent();
+	var length = $parent.find(".row-add").length;
+	//alert(length);
+	if (length <= 1) {
+		alert("至少保留一行");
+	} else {
+		$(opp).parent().remove();//移除当前行
+		changeIndex();
+	}
+}
+</script>
+
+</head>
+<body>
+<div class="container">
+<form method="post" action="a.html">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header small-header">
+				<h1>
+					基本信息 <small></small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-2 innerRow">
+					<img class="img-rounded" alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
+				</div>
+				<div class="col-md-8">
+						<div class="row innerRow">
+							<div class="col-md-6"><input id="realname" name="realname" type="text" class="form-control" placeholder="请输入真实姓名"></div>
+							<div class="col-md-6">
+							   <label class="radio-inline"> <input type="radio" name="sex" id="sex1" value="option1">男</label>
+                               <label class="radio-inline"> <input type="radio" name="sex" id="sex2" value="option2">女</label>
+							</div>
+						</div>
+						<!--  -->
+						<div class="row innerRow">
+							<div class="col-md-6">
+								<div class="input-group">
+									<input type="text" class="form-control" id="expectsalary" name="expectsalary" placeholder="期望税前薪酬">
+									<div class="input-group-addon">元/月</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group">
+									<input type="text" class="form-control" id="" name="" placeholder="最快到岗时间">
+									<div class="input-group-addon">天内</div>
+								</div>
+							</div>
+						</div>
+						<!--  -->
+						<div class="row innerRow">
+							<div class="col-md-6"><input id="" name="birthday" type="text" class="form-control" placeholder="出生日期（阳历）"></div>
+							<div class="col-md-6"><input id="" name="birthplace" type="text" class="form-control" placeholder="籍贯（省市）"></div>
+						</div>
+						<!--  -->
+						<div class="row innerRow">
+							<div class="col-md-6"><input id="" name="nation" type="text" class="form-control" placeholder="民族"></div>
+							<div class="col-md-6"><input id="" name="blood" type="text" class="form-control" placeholder="血型"></div>
+						</div>
+						<!--  -->
+						<div class="row innerRow">
+							<div class="col-md-6"><input id="" name="mobile" type="text" class="form-control" placeholder="手机号码"></div>
+							<div class="col-md-6"><input id="" name="email" type="text" class="form-control" placeholder="电子邮箱"></div>
+						</div>
+						<!--  -->
+						<div class="row innerRow">
+							<div class="col-md-6"><input id="" name="cardtype" type="text" class="form-control" placeholder="邮箱证件及号码"></div>
+							<div class="col-md-6"><input id="" name="address" type="text" class="form-control" placeholder="现居住地"></div>
+						</div>
+				</div>
+			</div>
+			<div class="page-header small-header">
+				<h1>
+					工作经历 <small></small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-10">
+					<div class="row-add">
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<input id="" name="company" type="text" class="form-control" placeholder="公司全称">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="duration" type="text" class="form-control" placeholder="任职时间">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="position" type="text" class="form-control" placeholder="职务名称">
+							</div>
+							<div class="col-md-3">
+								<div class="input-group">
+									<input id="" name="salary" type="text" class="form-control" placeholder="薪资范围">
+									<div class="input-group-addon">元/月</div>
+								</div>
+							</div>
+						</div>
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="证明人姓名">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="证明人手机">
+							</div>
+							<div class="col-md-6">
+								<input id="" name="" type="text" class="form-control" placeholder="离职原因">
+							</div>
+						</div>
+						</div>
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<button type="button" class="btn btn-primary btn-add" >+ 增加工作经历</button>
+							</div>
+							<div class="col-md-9">
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="page-header small-header">
+				<h1>
+					教育经历 <small></small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+					<div class="col-md-10">
+						<div class="row-add">
+							<div class="row innerRow">
+								<div class="col-md-3">
+									<input id="" name="" type="text" class="form-control"
+										placeholder="学校全称">
+								</div>
+								<div class="col-md-3">
+									<input id="" name="" type="text" class="form-control"
+										placeholder="专业">
+								</div>
+								<div class="col-md-3">
+									<input id="" name="" type="text" class="form-control"
+										placeholder="学历">
+								</div>
+								<div class="col-md-3">
+									<input id="" name="" type="text" class="form-control"
+										placeholder="就读时间">
+								</div>
+							</div>
+							<div class="row innerRow">
+								<div class="col-md-12">
+									<input id="" name="" type="text" class="form-control"
+										placeholder="奖励及证书">
+								</div>
+							</div>
+						</div>
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<button id="" name="" class="btn btn-primary btn-add">+
+									增加教育经历</button>
+							</div>
+							<div class="col-md-9"></div>
+						</div>
+					</div>
+				</div>
+			<div class="page-header small-header">
+				<h1>
+					亲属关系 <small></small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-10">
+					<div class="row-add">
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="亲属姓名">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="与本人关系">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="工作单位">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="联系电话">
+							</div>
+						</div>
+						</div>
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<button type="button" class="btn btn-primary btn-add" >+ 增加亲属关系</button>
+							</div>
+							<div class="col-md-9">
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="page-header small-header">
+				<h1>
+					个人能力<small></small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-10">
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="外语能力">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="水平">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="取得时间">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="备注">
+							</div>
+						</div>
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="计算机能力">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="水平">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="取得时间">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="说明">
+							</div>
+						</div>
+						<div class="row-add">
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="其他能力">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="水平">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="取得时间">
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="备注">
+							</div>
+						</div>
+						</div>
+						<div class="row innerRow">
+							<div class="col-md-3">
+								<button id="" name="" class="btn btn-primary btn-add" >+ 增加个人能力</button>
+							</div>
+							<div class="col-md-9">
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="page-header small-header">
+				<h1>
+					其他 <small></small>
+				</h1>
+			</div>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-10">
+						<div class="row innerRow">
+							<div class="col-md-5">目前是否与其他单位签订《竞业协议》？</div>
+							<div class="col-md-2">
+								 <label class="radio-inline"> <input type="radio" name="protocol-1" id="protocol-1-1" value="option1">是</label>
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="取得时间">
+							</div>
+							<div class="col-md-2">
+							 <label class="radio-inline"> <input type="radio" name="protocol-1" id="" name="protocol-1-2"  value="option1">否</label>
+							</div>
+						</div>
+						<div class="row innerRow">
+							<div class="col-md-5">目前是否与其他单位存在《劳动协议》？</div>
+							<div class="col-md-2">
+								 <label class="radio-inline"> <input type="radio" name="protocol-2" id="protocol-2-1" value="option1">是</label>
+							</div>
+							<div class="col-md-3">
+								<input id="" name="" type="text" class="form-control" placeholder="取得时间">
+							</div>
+							<div class="col-md-2">
+							 <label class="radio-inline"> <input type="radio" name="protocol-2" id="protocol-2-2" value="option1">否</label>
+							</div>
+						</div>
+						<div class="row innerRow">
+							<div class="col-md-12"><input id="" name=""  placeholder="上传简历（PDF格式）" type="file" /></div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="page-header small-header">
+				<h1 style="color:red">
+					郑重承诺
+				</h1>
+			</div>
+			<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-10">
+						<dl>
+							<dt>
+								本人在此声明，以上信息均属事实，并同意公司针对以往就业经历进行背景调查。如有伪造或隐瞒，本人同意公司按照管理规定采取相应措施，且同意公司无偿终止与本人的劳动关系。
+							</dt>
+						</dl>
+					</div>
+				</div> 
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-10">
+					<button type="submit" class="btn btn-default"> 确认提交</button>
+					</div>
+				</div> 
+		</div>
+	</div>
+</form>
+</div>
+</body>
+</html>
